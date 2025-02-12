@@ -5,23 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53674543-0689-46cc-ae9b-8d58fdfed166" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/DII-GEN6-CompoundSEC.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Class/EmployeeCard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/DII-GEN6-CompoundSEC/.idea/DII-GEN6-CompoundSEC.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/DII-GEN6-CompoundSEC/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/DII-GEN6-CompoundSEC/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/DII-GEN6-CompoundSEC/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/DII-GEN6-CompoundSEC/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/DII-GEN6-CompoundSEC/Class/EmployeeCard.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/DII-GEN6-CompoundSEC/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/DII-GEN6-CompoundSEC/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/DII-GEN6-CompoundSEC/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Class/EmployeeCard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DII-GEN6-CompoundSEC/Class/EmployeeCard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DII-GEN6-CompoundSEC/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DII-GEN6-CompoundSEC/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
