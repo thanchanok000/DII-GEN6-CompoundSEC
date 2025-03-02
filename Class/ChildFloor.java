@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ChildFloor extends Floor {
-        public ChildFloor(int id, String roomName, List<Room> rooms) {
+    public ChildFloor(int id, String roomName, List<Room> rooms) {
         super(id, roomName, Arrays.asList("low"), rooms);
     }
 

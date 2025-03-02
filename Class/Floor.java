@@ -93,5 +93,5 @@ public abstract class Floor {
                 ", rooms=" + rooms +
                 ", enterRoomHistory=" + enterRoomHistory +
                 '}';
-          }
+    }
 }
