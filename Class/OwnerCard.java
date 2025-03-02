@@ -1,15 +1,15 @@
-package    Class;
+package     Class;
 
 import java.util.List;
 
-public class ManagerCard extends Card {
+public class OwnerCard extends Card {
 
-    public ManagerCard(int id, String ownerName) {
-        super(id, ownerName, "medium");
+    public OwnerCard(int id, String ownerName) {
+        super(id, ownerName, "high");
     }
 
     public void create(Card card) {
-        System.out.println("Manager Card Created: " + card);
+        System.out.println("Owner Card Created: " + card);
     }
 
     public Card read(int id) {
@@ -30,7 +30,6 @@ public class ManagerCard extends Card {
 
     @Override
     public String getAccessLevel() {
-        return "medium";
+        return "high";
     }
-
 }

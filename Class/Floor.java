@@ -74,7 +74,7 @@ public abstract class Floor {
     public abstract void addRoom(Room room);
 
     // List ที่จัดเก็บประวัติของการเข้าห้องในชั้นนั้นๆ
-    public List<EnterRoomHistory> getEnterRoomHistory() {
+       public List<EnterRoomHistory> getEnterRoomHistory() {
         return enterRoomHistory;
     }
 

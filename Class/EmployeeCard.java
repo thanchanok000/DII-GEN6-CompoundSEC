@@ -1,4 +1,4 @@
-package Class;
+package   Class;
 
 import java.util.List;
 
@@ -51,6 +51,11 @@ public class EmployeeCard extends Card {
 
     public void updateAccessLevel(String level) {
         setAccessLevel(level);
+    }
+
+    @Override
+    public String getAccessLevel() {
+        return "low";
     }
 
     public boolean delete(int id) {
