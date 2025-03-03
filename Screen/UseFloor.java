@@ -1,15 +1,19 @@
 package Screen;
 
-import Class.*;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import   java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.List;
+import Class.FloorList;
+import Class.Floor;
+import Class.CardList;
+import Class.Card;
+import Class.EnterFloorHistory;
+import Class.EnterFloorHistoryList;
 
 public class UseFloor {
     private JPanel panel;
@@ -78,7 +82,7 @@ public class UseFloor {
                     cardComboBox.setRenderer(new DefaultListCellRenderer() {
                         @Override
                         public Component getListCellRendererComponent(JList<?> list, Object value, int index,
-                                boolean isSelected, boolean cellHasFocus) {
+                                                                      boolean isSelected, boolean cellHasFocus) {
                             super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
                             if (value instanceof Card) {
                                 Card card = (Card) value;
@@ -97,17 +101,17 @@ public class UseFloor {
                             "Enter Floor ID: " + floorId, JOptionPane.OK_CANCEL_OPTION);
                     if (result == JOptionPane.OK_OPTION) {
                         Card selectedCard = (Card) cardComboBox.getSelectedItem();
-                        
+
                         // Attempt to enter floor and add history.
                         Floor floor = FloorList.getFloors().get(selectedRow);
                         boolean success = floor.enterFloor(selectedCard);
-                        
+
                         EnterFloorHistoryList.addHistory(new EnterFloorHistory(selectedCard, success, floorName.toString()));
 
                         if (success) {
                             JOptionPane.showMessageDialog(panel,
                                     "Access granted to " + selectedCard.getOwnerName() + " for floor " + floorName);
-                            // เพิ่มประวัติการเข้า Floor    
+                            // เพิ่มประวัติการเข้า Floor
 
                             JFrame newFrame = new JFrame("Use Room");
                             UseRoom useRoom = new UseRoom(floor);

@@ -2,8 +2,7 @@ package    Class;
 
 import java.time.LocalDateTime;
 
-// Lec 10 มีความเกี่ยวกับ uml ในเรื่องการออกแบบ Class โดยมี Object 2 อย่างคือ Card และ Floor
-// โดย Card จะเป็นคลาสแม่ของบัตรทุกประเภท และ Floor จะเป็นคลาสแม่ของชั้นทุกชั้น
+
 // โดยใน Class นี้จะเป็นการบันทึกประวัติการเข้าชั้นของบัตร
 public class EnterFloorHistory {
     private Card card;

@@ -10,7 +10,6 @@ public abstract class Floor {
     private List<Room> rooms;
     private List<EnterRoomHistory> enterRoomHistory;
 
-    // Accessable Role คือ Role ที่เข้าถึงได้
 
     public Floor(int id, String roomName, List<String> accessableRole, List<Room> rooms) {
         this.id = id;
@@ -57,6 +56,7 @@ public abstract class Floor {
 
     // ฟังก์ชันเข้าห้อง โดยใส่ Card ในพารามิเตอร์
     // ถ้าผ่านจะบันทึกเป็น เข้าห้องสำเร็จ ถ้าไม่ ก็บันทึกเช่นกัน แต่จะบันทึกว่า เข้าห้องไม่สำเร็จ
+    //ข้อมูลการเข้าชั้น (ทั้งสำเร็จและไม่สำเร็จ) จะถูกบันทึกใน enterRoomHistory
     public boolean enterFloor(Card card) {
         boolean accessGranted = false;
         String decryptedAccessLevel = card.getAccessLevel(); // Decrypt access level

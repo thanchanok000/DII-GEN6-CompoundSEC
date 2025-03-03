@@ -1,4 +1,4 @@
-package     Class;
+package  Class;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ public class Room {
         this.name = name;
         this.accessableRole = accessableRole; // Initialize accessLevel
     }
-
+//สามารถแก้ไขชื่อห้อง และสิทธิ์ของห้องได้ (setName() & setAccessLevel())
     public int getId() {
         return id;
     }
@@ -33,7 +33,7 @@ public class Room {
         this.accessableRole.clear();
         this.accessableRole.addAll(accessLevel);
     }
-
+ //ตรวจสอบสิทธิ์ของบัตร enterRoom()
     public boolean enterRoom(Card card) {
         for (String role : this.accessableRole) {
             if (card.getAccessLevel().toLowerCase().equals((role).toLowerCase())) {

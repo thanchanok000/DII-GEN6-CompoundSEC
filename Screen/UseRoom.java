@@ -1,6 +1,12 @@
 package Screen;
 
-import Class.*;
+import Class.Room;
+import Class.RoomList;
+import Class.Card;
+import Class.CardList;
+import Class.EnterRoomHistory;
+import Class.EnterRoomHistoryList;
+import Class.Floor;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -10,7 +16,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 public class UseRoom {
-    private    JPanel panel;
+    private JPanel panel;
     private JTable roomTable;
     private Floor floor;
 
@@ -66,7 +72,7 @@ public class UseRoom {
                     cardComboBox.setRenderer(new DefaultListCellRenderer() {
                         @Override
                         public Component getListCellRendererComponent(JList<?> list, Object value, int index,
-                                boolean isSelected, boolean cellHasFocus) {
+                                                                      boolean isSelected, boolean cellHasFocus) {
                             super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
                             if (value instanceof Card) {
                                 Card card = (Card) value;
@@ -85,12 +91,12 @@ public class UseRoom {
                             "Enter Room ID: " + roomId, JOptionPane.OK_CANCEL_OPTION);
                     if (result == JOptionPane.OK_OPTION) {
                         Card selectedCard = (Card) cardComboBox.getSelectedItem();
-                        
+
                         // Attempt to enter room and add history.
                         Room room = rooms.get(selectedRow);
                         boolean success = room.enterRoom(selectedCard);
                         floor.addEnterRoomHistory(new EnterRoomHistory(selectedCard, success, roomName.toString()));
-                        
+
                         if (success) {
                             JOptionPane.showMessageDialog(panel,
                                     "Access granted to " + selectedCard.getOwnerName() + " for room " + roomName);

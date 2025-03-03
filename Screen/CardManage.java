@@ -1,6 +1,6 @@
 package Screen;
 
-import    Class.*;
+import Class.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -26,7 +26,7 @@ public class CardManage {
         };
 
         table1.setModel(model); // Set model to the existing table
-        loadCardData(); // Load data from CardList
+        loadCardData(); // Load data from CardList Singleton
 
         // Set the ComboBox as the editor for the "Status" column
         TableColumn statusColumn = table1.getColumnModel().getColumn(2);
@@ -65,20 +65,20 @@ public class CardManage {
                 if (!cardName.isEmpty() && accessLevel != null) {
                     Card newCard;
                     if (accessLevel.equals("low")) {
-                        newCard = new EmployeeCard(CardList.getCards().size() + 1, cardName, accessLevel);
+                        newCard = new EmployeeCard(CardList.getInstance().getCards().size() + 1, cardName, accessLevel);
                     } else if (accessLevel.equals("medium")) {
-                        newCard = new ManagerCard(CardList.getCards().size() + 1, cardName);
+                        newCard = new ManagerCard(CardList.getInstance().getCards().size() + 1, cardName);
                     } else if (accessLevel.equals("high")) {
-                        newCard = new OwnerCard(CardList.getCards().size() + 1, cardName);
+                        newCard = new OwnerCard(CardList.getInstance().getCards().size() + 1, cardName);
                     } else {
-                        newCard = new Card(CardList.getCards().size() + 1, cardName, accessLevel) {
+                        newCard = new Card(CardList.getInstance().getCards().size() + 1, cardName, accessLevel) {
                             @Override
                             public String getAccessLevel() {
                                 return accessLevel;
                             }
                         };
                     }
-                    CardList.addCard(newCard);
+                    CardList.getInstance().addCard(newCard);
                     loadCardData();
                 }
             }
@@ -110,7 +110,7 @@ public class CardManage {
             String newAccessLevel = (String) accessLevelComboBox.getSelectedItem();
 
             if (!newCardName.isEmpty() && newAccessLevel != null) {
-                Card oldCard = CardList.getCards().get(row);
+                Card oldCard = CardList.getInstance().getCards().get(row);
                 Card newCard;
                 if (newAccessLevel.equals("low")) {
                     newCard = new EmployeeCard(oldCard.getId(), newCardName, newAccessLevel);
@@ -126,17 +126,17 @@ public class CardManage {
                         }
                     };
                 }
-                CardList.updateCard(row, newCard); // Update the card in the list
+                CardList.getInstance().updateCard(row, newCard); // Update the card in the list
                 loadCardData();
             }
         }
     }
 
-    // Method to Load Data from CardList into JTable
+    // Method to Load Data from CardList Singleton into JTable
     private void loadCardData() {
         model.setRowCount(0); // Clear existing data
 
-        List<Card> cards = CardList.getCards(); // Fetch current card list
+        List<Card> cards = CardList.getInstance().getCards(); // Fetch current card list
         for (Card card : cards) {
             model.addRow(new Object[] { card.getId(), card.getOwnerName(), card.getEncryptedAccessLevel() });
         }

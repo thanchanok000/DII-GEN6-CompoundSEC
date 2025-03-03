@@ -8,11 +8,6 @@ import java.util.Base64;
 import java.security.MessageDigest;
 import java.util.Arrays;
 
-// เรื่อง Late Binding Lec8
-// Late Binding คือการตัดสินใจเลือกเรียกเมธอดของอ็อบเจกต์จริง (Object) ในขณะ Runtime
-// ไม่ใช่ดูจากชนิดของตัวแปรในขณะ Compile Time
-// เช่น หากมีคลาสลูกที่ Override เมธอด toString() เมื่อเรียกผ่านตัวแปรประเภท Card
-// จะเรียก toString() ของคลาสลูก (ตาม Object จริง) นั่นคือ Late Binding
 
 public abstract class Card {
     private int id;
@@ -25,10 +20,9 @@ public abstract class Card {
         this.ownerName = ownerName;
         this.creationTime = LocalDateTime.now();
 
-        // ในส่วน Access Level ที่มีการเข้ารหัส เมื่อมีการสร้าง Card ส่วนของ Attribute level จะมี parameter ที่รับเข้ามาคือ
-        // accessLevel เป็นไปได้ 3 แบบคือ low , medium , high , none
-        // เมื่อเราต้องการปกปิดข้อมูลโดยการเข้ารหัส เราก็จะทำการนำข้อความที่อาจจะเป็น low medium high มาเข้ารหัส โดยใช้ key นั่นคือเวลาปัจจุบัน
-        // และเก็บ Key ไว้ในตัวแปรอื่นเพื่อนำมาถอดรหัสในภายหลังเมื่อต้องการเห็นค่าที่แท้จริง
+        // คลาส Card จะเปลี่ยนให้เก็บค่า role จากเดิมที่เก็บเป็น low, medium, high ,none เป็นรูปแบบที่เข้ารหัส เช่น "X7fA9B...zK2Qm"
+        // ทำให้ผู้ที่เห็นบัตรไม่สามารถรู้ได้ว่าบัตรนี้ใช้เข้าห้องไหนได้บ้าง หากไม่ลองใช้งานจริง โดยกระบวนการเข้ารหัสจะใช้ เวลาที่สร้างบัตร เป็นส่วนหนึ่งของกระบวนการ
+        //  เมื่อมีการใช้บัตร ระบบต้องถอดรหัส role กลับมาเพื่อทำการตรวจสอบสิทธิ์
         this.accessLevel = encrypt(accessLevel, creationTime.format(DateTimeFormatter.ISO_DATE_TIME));
         // เก็บ Log การสร้าง Card
         CardEditHistoryList.addHistory(new CardEditHistory(this, "creation", "N/A", "Card Created"));
@@ -44,7 +38,7 @@ public abstract class Card {
         // เก็บ Log การแก้ไข Card
         CardEditHistoryList.addHistory(new CardEditHistory(this, "ownerName", oldValue, ownerName));
     }
-
+//setAccessLevel() - เปลี่ยนระดับสิทธิ์การเข้าถึง
     public void setAccessLevel(String accessLevel) {
         String oldValue = decrypt(this.accessLevel, creationTime.format(DateTimeFormatter.ISO_DATE_TIME));
         this.accessLevel = encrypt(accessLevel, creationTime.format(DateTimeFormatter.ISO_DATE_TIME));
@@ -67,16 +61,7 @@ public abstract class Card {
         return accessLevel;
     }
 
-    // เรื่อง Object Class Lec8
-    // เมธอด toString() นี้เป็นการ Override (เขียนทับ) เมธอด toString() จาก Object
-    // Class
-    // Object Class เป็นคลาสแม่ของทุกคลาสใน Java โดยทุกคลาสจะสืบทอดจาก Object Class
-    // โดยอัตโนมัติ
-    // เมธอด toString() ใน Object Class ดั้งเดิม จะคืนค่าเป็น ชื่อคลาส + @ +
-    // แฮชโค้ดของอ็อบเจกต์ เช่น Card@1a2b3c
-    // แต่เมื่อเราทำการ Override เราสามารถกำหนดรูปแบบข้อความที่ต้องการแสดงผลได้เอง
-    // ตัวอย่างนี้คือการแสดง ID, ชื่อเจ้าของ และระดับการเข้าถึงของบัตร
-    @Override
+
     public String toString() {
         return "Card [ID=" + id + ", Name=" + ownerName + ", Access Level=" + accessLevel + "]";
     }
@@ -96,7 +81,6 @@ public abstract class Card {
             throw new RuntimeException(e);
         }
     }
-
     // ฟังก์ชันถอดรหัส ใช้ในการถอดรหัสเพื่อดูค่าที่แท้จริงของ Access Level
     private String decrypt(String data, String key) {
         try {
