@@ -1,5 +1,6 @@
 package Screen;
 
+
 import Class.*;
 
 import javax.swing.*;
@@ -146,3 +147,4 @@ public class CardManage {
         return panel1;
     }
 }
+

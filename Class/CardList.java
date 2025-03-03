@@ -1,7 +1,4 @@
-package Class;
 
-import java.util.ArrayList;
-import java.util.List;
 
 //Singleton pattern
 //เป็น design pattern ที่ใช้สำหรับการสร้าง class ที่สามารถมี instance ได้แค่หนึ่งเดียวในระบบตลอดการทำางานของโปรแกรม
@@ -12,6 +9,11 @@ import java.util.List;
 //private constructor ทำให้ไม่สามารถสร้างอินสแตนซ์ใหม่จากภายนอก
 //public static getInstance() ใช้ควบคุมการสร้างและคืนค่าอินสแตนซ์เดิม
 //ใช้ static final List<> ทำให้ข้อมูลถูกแชร์ทั่วทั้งโปรแกรม
+
+package Class;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CardList {
     // Private static instance
